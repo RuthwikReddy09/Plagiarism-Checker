@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/navbar.css"
+import {Link} from "react-router-dom"
 function Navbar() {
   return (
     <div className='navbar'>
@@ -7,9 +8,8 @@ function Navbar() {
             Plagiarism Checker
         </div>
         <div className="links">
-            <a href="#" className="link">Home</a>
-            <a href="#" className="link">About</a>
-            <a href="#" className="link">Contact</a>
+            <Link to="/" className="link">Home</Link>
+            <Link to="#" className="link">About</Link>
         </div>
     </div>
   )

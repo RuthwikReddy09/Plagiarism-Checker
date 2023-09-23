@@ -1,12 +1,22 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
+import { useState,useRef } from "react";
 import "../styles/home.css";
+
+
+
 function Home() {
   const [text1,setText1]=useState("");
   const [text2,setText2]=useState("");
+  const [score,setScore]=useState(-1);
+  const refContainer = useRef(null);
+useEffect(()=>{
+  // console.log(score);
+  refContainer.current?.scrollIntoView({ behavior: "smooth" });
+},[score])
   function btnHnadler(){
-    console.log(text1);
-    console.log(text2);
+    // console.log(text1);
+    // console.log(text2);
+    refContainer.current?.scrollIntoView({ behavior: "smooth" });
     fetch("http://127.0.0.1:5000/",{
       method: 'POST',
       body: JSON.stringify({t1:text1,t2:text2}),
@@ -15,7 +25,10 @@ function Home() {
       }
     })
     .then((data)=>data.json())
-    .then((res)=>console.log(res))
+    .then((res)=>{
+      setScore(res)
+      // console.log(res)
+    })
     .catch((err)=>{
       console.warn(err);
     })
@@ -36,6 +49,11 @@ function Home() {
       <div className="submit">
         <button className="btn" onClick={(e)=>btnHnadler(e)}>Check For Plagiarism</button>
       </div>
+      
+      {score!=-1 &&
+      <p className="output-text" ref={refContainer} >The texts are <b>{score*100}%</b> similar</p>
+    }
+   
     </div>
   );
 }
