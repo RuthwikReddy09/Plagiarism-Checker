@@ -2,20 +2,16 @@ import React, { useEffect } from "react";
 import { useState,useRef } from "react";
 import "../styles/home.css";
 
-
-
 function Home() {
   const [text1,setText1]=useState("");
   const [text2,setText2]=useState("");
   const [score,setScore]=useState(-1);
   const refContainer = useRef(null);
-useEffect(()=>{
-  // console.log(score);
+
+useEffect(()=>{ 
   refContainer.current?.scrollIntoView({ behavior: "smooth" });
 },[score])
   function btnHnadler(){
-    // console.log(text1);
-    // console.log(text2);
     refContainer.current?.scrollIntoView({ behavior: "smooth" });
     fetch("http://127.0.0.1:5000/",{
       method: 'POST',
@@ -25,17 +21,12 @@ useEffect(()=>{
       }
     })
     .then((data)=>data.json())
-    .then((res)=>{
-      setScore(res)
-      // console.log(res)
-    })
-    .catch((err)=>{
-      console.warn(err);
-    })
+    .then((res)=>setScore(res))
+    .catch((err)=>console.warn(err))
   }
   return (
     <div className="home">
-      <h1 className="heading">Plagiarism Checker</h1>
+      <h3 className="heading">Enter Text1 and Text2</h3>
       <div className="content">
         <div className="text">
           <h4 className="text-heading">Text1</h4>
@@ -52,7 +43,7 @@ useEffect(()=>{
       
       {score!=-1 &&
       <p className="output-text" ref={refContainer} >The texts are <b>{score*100}%</b> similar</p>
-    }
+      }
    
     </div>
   );
