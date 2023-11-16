@@ -10,8 +10,8 @@ from nltk.stem import PorterStemmer
 app=Flask(__name__) 
 cors = CORS(app)
 
-nltk.download('stopwords')
-nltk.download('wordnet')
+# nltk.download('stopwords')
+# nltk.download('wordnet')
 
 def removeStopWords(text):
     cachedStopWords = stopwords.words("english")

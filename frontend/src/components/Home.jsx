@@ -42,7 +42,7 @@ useEffect(()=>{
       </div>
       
       {score!=-1 &&
-      <p className="output-text" ref={refContainer} >The texts are <b>{score*100}%</b> similar</p>
+      <p className="output-text" ref={refContainer} >The texts are <b>{(score*100).toFixed(2)}%</b> similar</p>
       }
    
     </div>
