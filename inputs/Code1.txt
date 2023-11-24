@@ -17,6 +17,7 @@ cors = CORS(app)
 # nltk.download('wordnet')
 
 
+
 def removeStopWords(text):
     lang=detect(text)
     translator= Translator(from_lang=lang,to_lang="en") 
@@ -54,3 +55,5 @@ def home():
 
 if(__name__=="__main__"):
     app.run(debug=True)
+
+    

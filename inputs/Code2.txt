@@ -17,6 +17,7 @@ cors = CORS(app)
 # nltk.download('wordnet')
 
 
+
 def removeStopWords(text):
     lang=detect(text)
     translator= Translator(from_lang=lang,to_lang="en") 
@@ -46,11 +47,5 @@ def check_plagiarism(t1,t2):
     score = similarity(vectors[0],vectors[1])      # Similarity Score
     return score[0][1]
 
-@app.route("/",methods=["GET","POST"])
-def home():
-    if request.method == "POST":
-        jsonData = request.get_json()
-        return jsonify(check_plagiarism(jsonData['t1'],jsonData['t2']))
 
-if(__name__=="__main__"):
-    app.run(debug=True)
+    

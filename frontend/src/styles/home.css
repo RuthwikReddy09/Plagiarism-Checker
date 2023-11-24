@@ -19,7 +19,8 @@
 .text-heading{
     margin-bottom: 10px;
 }
-#text1{
+#text1,#text2{
+border-radius: 5px;
  width: 400px;   
  height: 300px;
  color: black;
@@ -27,13 +28,25 @@
  resize: none;
 }
 
-#text2{
-    width: 400px;   
-    height: 300px;
-    color: black;
+input[type="file"]{
+    display: none;
+  }
+
+.fileInput1l,.fileInput2l{
+    font-size: small;
+    cursor: pointer;
+    color: #757575;
+    width: 400px;
+    height: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin: 5px;
     padding: 10px;
-    resize: none;
 }
+
 
 .btn{
     text-decoration: none;
@@ -55,7 +68,13 @@
     #text1{
         width: 300px;
        }
-    #text2{
+       .fileInput1l{
         width: 300px;
        }
+       #text2{
+           width: 300px;
+        }
+        .fileInput2l{
+         width: 300px;
+        }
 }
